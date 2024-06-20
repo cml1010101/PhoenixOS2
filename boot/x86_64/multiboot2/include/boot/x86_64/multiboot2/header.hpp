@@ -23,7 +23,7 @@ namespace boot
                 uint16_t type;
                 uint16_t flags;
                 uint32_t size;
-                uint32_t requests[N];
+                int requests[N];
                 template<typename... Args>
                 constexpr information_request_tag(Args... args) : type(1), flags(0), size(sizeof(information_request_tag<N>)), requests{args...}
                 {
@@ -47,8 +47,8 @@ namespace boot
                 uint16_t type;
                 uint16_t flags;
                 uint32_t size;
-                uint32_t entry_address;
-                constexpr entry_address_tag(uint32_t entry_address) : type(3), flags(0), size(sizeof(entry_address_tag)), entry_address(entry_address)
+                void (*entry_address)();
+                constexpr entry_address_tag(void (*entry_address)()) : type(3), flags(0), size(sizeof(entry_address_tag)), entry_address(entry_address)
                 {
                 }
             };
