@@ -1,3 +1,4 @@
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 add_executable(kernel "src/kernel.cpp")
 target_link_libraries(kernel PRIVATE bootloader)
 target_link_options(kernel PRIVATE ${KERNEL_LINK_FLAGS})
